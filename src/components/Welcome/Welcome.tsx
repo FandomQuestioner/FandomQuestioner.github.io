@@ -15,16 +15,17 @@ import gif from '../../assets/robot-typing.gif';
 import sendIcon from '../../assets/sendIcon.gif';
 
 export function Welcome() {
+	const [backendURL, setBackendURL] = useState('');
 	const [fandom, setFandom] = useState('');
 	const [prompt, setPrompt] = useState('');
 	const [temperature, setTemperature] = useState(0.3);
 
 	const askQuestion = () => {
 		const myHeaders = new Headers();
-		myHeaders.append('ngrok-skip-browser-warning', '69420');
+		myHeaders.append('ngrok-skip-browser-warning', 'any');
 		myHeaders.append('Content-Type', 'application/json');
 
-		const root_url = 'https://fd55-34-80-13-111.ngrok-free.app';
+		const root_url = backendURL;
 
 		fetch(
 			`${root_url}/ask?question=${prompt}&fandom=${fandom}&temperature=${temperature}`,
@@ -52,6 +53,16 @@ export function Welcome() {
 					Questioner
 				</Text>
 			</Title>
+			<TextInput
+				maw={580}
+				mx="auto"
+				variant="filled"
+				label="Input backend"
+				description="Input backend."
+				placeholder="Input backend url..."
+				value={fandom}
+				onChange={(event) => setBackendURL(event.currentTarget.value)}
+			/>
 			<TextInput
 				maw={580}
 				mx="auto"

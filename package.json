@@ -2,7 +2,7 @@
 	"name": "fandom-questioner-frontend",
 	"private": true,
 	"version": "0.0.0",
-	"homepage": "https://fandomquestioner.github.io/FandomQuestionerFrontend",
+	"homepage": "https://fandomquestioner.github.io",
 	"scripts": {
 		"dev": "vite",
 		"build": "tsc && vite build",
