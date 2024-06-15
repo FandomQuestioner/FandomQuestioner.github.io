@@ -5,7 +5,7 @@
 	"homepage": "https://jonathan-luo01.github.io/FandomQuestionerFrontend",
 	"scripts": {
 		"dev": "vite",
-		"build": "tsc && vite build",
+		"build": "tsc && vite build --base=./",
 		"preview": "vite preview",
 		"typecheck": "tsc --noEmit",
 		"lint": "npm run lint:eslint && npm run lint:stylelint",
