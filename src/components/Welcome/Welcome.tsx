@@ -27,6 +27,8 @@ export function Welcome() {
 
 		const root_url = backendURL;
 
+		console.log(`Calling ${root_url}`);
+
 		fetch(
 			`${root_url}/ask?question=${prompt}&fandom=${fandom}&temperature=${temperature}`,
 			{
@@ -60,7 +62,7 @@ export function Welcome() {
 				label="Input backend"
 				description="Input backend."
 				placeholder="Input backend url..."
-				value={fandom}
+				value={backendURL}
 				onChange={(event) => setBackendURL(event.currentTarget.value)}
 			/>
 			<TextInput
