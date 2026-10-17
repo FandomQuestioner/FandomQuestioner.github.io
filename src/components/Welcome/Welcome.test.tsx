@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { MantineProvider } from '@mantine/core';
 import { describe, it, expect } from 'vitest';
+import App from '../../App';
 import { Welcome } from './Welcome';
 
 function renderWithMantine(ui: React.ReactNode) {
@@ -29,5 +30,10 @@ describe('Welcome component', () => {
 		expect(screen.getByText('Marvel')).toBeInTheDocument();
 		expect(screen.getByText('Pokémon')).toBeInTheDocument();
 		expect(screen.getByText('Lord of the Rings')).toBeInTheDocument();
+	});
+
+	it('renders App without crashing', () => {
+		render(<App />);
+		expect(screen.getByRole('heading', { level: 1 })).toBeInTheDocument();
 	});
 });
