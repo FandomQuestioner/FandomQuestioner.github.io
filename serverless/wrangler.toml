@@ -1,0 +1,4 @@
+name = "fandom-questioner-api"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+account_id = "b5a2ca960e420f3ce4f01ce679e1655c"

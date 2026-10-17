@@ -1,34 +1,60 @@
-# Mantine Vite template
+# Fandom Questioner
+
+An AI-powered web app that answers lore, story, and trivia questions for any fictional universe using Fandom wikis, backed by Google's Gemini models with source citations.
 
 ## Features
 
-This template comes with the following features:
+- **Canon Lore Answers**: Provides direct answers without AI conversational fluff or preamble.
+- **Wiki Citations**: Includes links back to relevant Fandom wiki articles for further reading.
+- **Quick Fandom Select**: Presets for popular fandoms (Star Wars, Harry Potter, Marvel, Pokémon, Lord of the Rings) or input any custom Fandom wiki URL.
+- **Mobile Responsive**: Built with Mantine UI with fluid layouts for mobile and desktop screens.
+- **Serverless Edge API**: Proxies requests securely through a Cloudflare Worker so API keys are never exposed on the client.
 
-- [PostCSS](https://postcss.org/) with [mantine-postcss-preset](https://mantine.dev/styles/postcss-preset)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Storybook](https://storybook.js.org/)
-- [Vitest](https://vitest.dev/) setup with [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
-- ESLint setup with [eslint-config-mantine](https://github.com/mantinedev/eslint-config-mantine)
+## Getting Started
 
-## npm scripts
+### Prerequisites
 
-## Build and dev scripts
+- Node.js (v20+ recommended)
+- npm
 
-- `dev` – start development server
-- `build` – build production version of the app
-- `preview` – locally preview production build
+### Installation & Development
 
-### Testing scripts
+```bash
+# Install dependencies
+npm install
 
-- `typecheck` – checks TypeScript types
-- `lint` – runs ESLint
-- `prettier:check` – checks files with Prettier
-- `vitest` – runs vitest tests
-- `vitest:watch` – starts vitest watch
-- `test` – runs `vitest`, `prettier:check`, `lint` and `typecheck` scripts
+# Start local frontend dev server (Vite)
+npm run dev
+```
 
-### Other scripts
+The frontend will run at `http://localhost:5173`. By default, it connects to the deployed Cloudflare Worker API.
 
-- `storybook` – starts storybook dev server
-- `storybook:build` – build production storybook bundle to `storybook-static`
-- `prettier:write` – formats all files with Prettier
+### Local Backend (Optional)
+
+If you prefer to run the proxy server locally:
+
+1. Create a `backend/.env` file:
+   ```bash
+   cp backend/.env.example backend/.env
+   ```
+2. Add your Google Gemini API key to `backend/.env`:
+   ```env
+   GEMINI_API_KEY=your_gemini_api_key_here
+   ```
+3. Start the backend:
+   ```bash
+   npm run server
+   ```
+
+To point the frontend to your local backend, create a `.env` in the root with:
+```env
+VITE_BACKEND_URL=http://localhost:3001
+```
+
+## Scripts
+
+- `npm run dev` – Start the Vite dev server
+- `npm run build` – Typecheck and build production bundle into `dist/`
+- `npm run test` – Run typecheck, Prettier, ESLint, Vitest, and Vite build
+- `npm run vitest` – Run unit tests
+- `npm run server` – Run the local Express backend proxy
